@@ -2,9 +2,9 @@ import LinkedList from '../linked-list/LinkedList';
 
 export default class Stack {
   constructor() {
-    // We're going to implement Queue based on LinkedList since this
-    // structures a quite similar. Compare push/pop operations of the Stack
-    // with append/deleteTail operations of LinkedList.
+    // We're going to implement Stack based on LinkedList since these
+    // structures are quite similar. Compare push/pop operations of the Stack
+    // with prepend/deleteHead operations of LinkedList.
     this.linkedList = new LinkedList();
   }
 
@@ -12,8 +12,8 @@ export default class Stack {
    * @return {boolean}
    */
   isEmpty() {
-    // The queue is empty in case if its linked list don't have tail.
-    return !this.linkedList.tail;
+    // The stack is empty if its linked list doesn't have a head.
+    return !this.linkedList.head;
   }
 
   /**
@@ -21,12 +21,12 @@ export default class Stack {
    */
   peek() {
     if (this.isEmpty()) {
-      // If linked list is empty then there is nothing to peek from.
+      // If the linked list is empty then there is nothing to peek from.
       return null;
     }
 
-    // Just read the value from the end of linked list without deleting it.
-    return this.linkedList.tail.value;
+    // Just read the value from the start of linked list without deleting it.
+    return this.linkedList.head.value;
   }
 
   /**
@@ -34,18 +34,18 @@ export default class Stack {
    */
   push(value) {
     // Pushing means to lay the value on top of the stack. Therefore let's just add
-    // new value at the end of the linked list.
-    this.linkedList.append(value);
+    // the new value at the start of the linked list.
+    this.linkedList.prepend(value);
   }
 
   /**
    * @return {*}
    */
   pop() {
-    // Let's try to delete the last node from linked list (the tail).
-    // If there is no tail in linked list (it is empty) just return null.
-    const removedTail = this.linkedList.deleteTail();
-    return removedTail ? removedTail.value : null;
+    // Let's try to delete the first node (the head) from the linked list.
+    // If there is no head (the linked list is empty) just return null.
+    const removedHead = this.linkedList.deleteHead();
+    return removedHead ? removedHead.value : null;
   }
 
   /**
@@ -54,8 +54,7 @@ export default class Stack {
   toArray() {
     return this.linkedList
       .toArray()
-      .map(linkedListNode => linkedListNode.value)
-      .reverse();
+      .map(linkedListNode => linkedListNode.value);
   }
 
   /**

@@ -1,5 +1,10 @@
 # Linked List
 
+_Read this in other languages:_
+[_简体中文_](README.zh-CN.md),
+[_Русский_](README.ru-RU.md),
+[_Português_](README.pt-BR.md)
+
 In computer science, a **linked list** is a linear collection 
 of data elements, in which linear order is not given by 
 their physical placement in memory. Instead, each 
@@ -110,30 +115,30 @@ Traverse(head)
   Pre: head is the head node in the list
   Post: the items in the list have been traversed
   n ← head
-  while n = 0
+  while n != ø
     yield n.value
     n ← n.next
   end while
 end Traverse
 ```
-    
+
 ### Traverse in Reverse
 
 ```text
 ReverseTraversal(head, tail)
   Pre: head and tail belong to the same list
   Post: the items in the list have been traversed in reverse order
-  if tail = ø
+  if tail != ø
     curr ← tail
-    while curr = head
+    while curr != head
       prev ← head
-      while prev.next = curr
+      while prev.next != curr
         prev ← prev.next
       end while
       yield curr.value
       curr ← prev
     end while
-   yeild curr.value
+   yield curr.value
   end if
 end ReverseTraversal
 ```
@@ -144,7 +149,7 @@ end ReverseTraversal
 
 | Access    | Search    | Insertion | Deletion  |
 | :-------: | :-------: | :-------: | :-------: |
-| O(n)      | O(n)      | O(1)      | O(1)      |
+| O(n)      | O(n)      | O(1)      | O(n)      |
 
 ### Space Complexity
 
